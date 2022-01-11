@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Provider"),
+        title: const Text("Provider 적용한 counter"),
       ),
       body: ChangeNotifierProvider(
         create: (BuildContext context) => MainViewModel(),
