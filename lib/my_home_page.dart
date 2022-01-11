@@ -9,20 +9,25 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Provider 적용한 counter"),
       ),
-      body: ChangeNotifierProvider(
-        create: (BuildContext context) => MainViewModel(),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MainCounter(),
-              MainButton(),
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MainCounter(count: viewModel.count),
+            MainButton(
+              incButtonClicked: () {
+                viewModel.increment();
+              },
+              decButtonClicked: () {
+                viewModel.reduce();
+              },
+            ),
+          ],
         ),
       ),
     );
