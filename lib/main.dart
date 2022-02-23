@@ -27,3 +27,7 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage());
   }
 }
+
+// MyApp 과 MyHomePage 에 각각 MainViewModel 이 꽂혀 있는데,
+// 지금 나와 있는 코드에서는 꽂혀있는 1번 과 2번 MainViewModel 중
+// MainCounter 과 MainButton 은 더 가까이 있는 2번을 사용하게 된다.
