@@ -1,9 +1,14 @@
-import 'package:counter/main_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({Key? key}) : super(key: key);
+  final void Function() incButtonClicked; // 안에 리턴이 있거나 하면 안에 int 를 써주면 된다.
+  final void Function() redButtonClicked;
+
+  const MainButton(
+      {Key? key,
+      required this.incButtonClicked,
+      required this.redButtonClicked})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,7 @@ class MainButton extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            context.read<MainViewModel>().increment();
+            incButtonClicked();
           },
           child: const Icon(Icons.add),
         ),
@@ -21,7 +26,7 @@ class MainButton extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            context.read<MainViewModel>().reduce();
+            redButtonClicked();
           },
           child: const Icon(
             Icons.remove_outlined,
